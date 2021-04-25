@@ -12,6 +12,8 @@ user_list: list = [] # liste contenant la liste de couleur entrée par l'utilisa
 
 verification = 0 #argument 0 = faux et 1 = vrai pour savoir si l'entrée par l'utilisateur est valideé 
 
+gameWon: bool = False # boolean to know if the user has found the code
+
 ### fonctions ###
 
 def getList():
@@ -47,7 +49,7 @@ while len(code) != len(user_list):
             break 
     if a == 1: 
         print("Le format de la liste entrée par l'utilisateur est validé ")
-        verification = 1
+        verification = 1 # on peut maintenant commencer à comparer les listes
 
     else: 
         print("Le format de la liste entrée par l'utilisateur n'est pas validé")
@@ -59,3 +61,36 @@ while len(code) != len(user_list):
     #######
 
 
+
+while gameWon == False and verification ==  1:
+
+    code_copy = code
+
+    if code == user_list:
+        response = 4*["black"]
+        print("Congrats,you have found the code!")
+        gameWon = True
+        break
+
+    # compare exact positions
+    for i in range(4):
+        if code_copy[i] == user_list[i]:
+            response.append("black")
+            code_copy[i] = "0"
+    print(code_copy)
+    print(response)
+
+
+    #comparer les couleurs 
+
+    for i in range(4):
+         for n in range(4):
+             if user_list[i] == code_copy[n]:
+                response.append("white")
+                user_list[i] = "rien"
+                code_copy[n] = "0"
+    print(code_copy)
+    print(response)
+    gameWon = True
+
+                 
