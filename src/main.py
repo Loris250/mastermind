@@ -31,7 +31,7 @@ user_list = []
 
 while len(code) != len(user_list):         
     user_list = getList()                   # ask user to enter a code
-    print(user_list)
+    print("La liste de couleur entrée par l'utilisateur est: ", user_list)
     if len(code) != len(user_list):
         print("Enter a code of length 4 !!!!")   # verification for uncapable users :)
 

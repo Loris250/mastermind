@@ -1,0 +1,61 @@
+import random
+
+### variables ###
+
+colors: list = ["blue", "green", "yellow", "red", "orange", "grey"] # colors to be used in game
+
+code: list = [] # list containing random arrangement of 4 colors to be found out be user
+
+response: list = [] # list containing black or white as response to user_list
+
+user_list: list = [] # liste contenant la liste de couleur entrée par l'utilisateur 
+
+verification = 0 #argument 0 = faux et 1 = vrai pour savoir si l'entrée par l'utilisateur est valideé 
+
+### fonctions ###
+
+def getList():
+    input_string: str = input("Enter a code of four colors (blue, green, yellow, red, orange or grey) separated by a space: ")
+    user_list: list = input_string.split()
+    return user_list
+
+    ### code ###
+
+def generercode(): 
+    for i in range(4): # generating random code
+        code.append(random.choice(colors))
+    print("Le code est: ", code)
+    return code 
+
+### début du programme ### 
+
+code = generercode() # on commence par générer un code: une séquence de 4 couleurs 
+
+
+
+
+###étape de vérification de l'entrée du code###
+
+while len(code) != len(user_list):         
+    user_list = getList()                   # ask user to enter a code
+    print("La liste de couleur entrée par l'utilisateur est: ", user_list)
+    a = 1
+    for i in range(4): 
+        if user_list[i] not in colors: 
+            print("Entrez une liste avec les couleurs qui sont données")
+            a = 2
+            break 
+    if a == 1: 
+        print("Le format de la liste entrée par l'utilisateur est validé ")
+        verification = 1
+
+    else: 
+        print("Le format de la liste entrée par l'utilisateur n'est pas validé")
+        user_list = []
+
+    if len(code) != len(user_list):
+        print("Enter a code of length 4 !!!!")   # verification for uncapable users :)
+
+    #######
+
+
