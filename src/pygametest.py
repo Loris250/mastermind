@@ -27,6 +27,7 @@ def generercode():
     return code 
 
 code = generercode() #on genere un code 
+print(code)
 
 ########################################
 #verification du code
@@ -131,6 +132,17 @@ repcase1couleur = {
 x = 250
 y = 250
 
+##################################################################################
+#les verifications des lignes sont éteintes de base
+##################################################################################
+verifyline1 = False
+verifyline2 = False
+verifyline3 = False
+verifyline4 = False
+#etc
+
+
+
 
 
 game_on = True #variable qui définit que le jeu est allumé
@@ -210,11 +222,33 @@ while game_on == True:
     
     ############################################
     ##########################################
-    
-    pygame.draw.rect(screen, pygame.Color(repcase1couleur["i"]), repcase1["i"])
-    pygame.draw.rect(screen, pygame.Color(repcase1couleur["ii"]), repcase1["ii"])
-    pygame.draw.rect(screen, pygame.Color(repcase1couleur["iii"]), repcase1["iii"])
-    pygame.draw.rect(screen, pygame.Color(repcase1couleur["iv"]), repcase1["iv"])
+
+#clavier pour vérifier les lignes:
+    if keys[pygame.K_1]:
+        verifyline1 = True
+    if keys[pygame.K_2]:
+        verifyline2 = True
+    if keys[pygame.K_3]:
+        verifyline3 = True
+    if keys[pygame.K_4]:
+        verifyline4 = True
+
+
+
+
+    #donner la vérification de la ligne 1: 
+    if verifyline1 == True:
+
+        resultligne1 = verificationcode(code,reponseligne1)
+        print(resultligne1, "o")
+        print(reponseligne1)
+        print(code, "ee")
+
+
+        pygame.draw.rect(screen, pygame.Color(repcase1couleur["i"]), repcase1["i"])
+        pygame.draw.rect(screen, pygame.Color(repcase1couleur["ii"]), repcase1["ii"])
+        pygame.draw.rect(screen, pygame.Color(repcase1couleur["iii"]), repcase1["iii"])
+        pygame.draw.rect(screen, pygame.Color(repcase1couleur["iv"]), repcase1["iv"])
 
 
 
