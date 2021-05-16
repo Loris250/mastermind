@@ -30,10 +30,22 @@ banniere =pygame.Rect(0,0,1000,200) #definition d'une surface ou l'on affichera 
 ###########################################################################################################
 #definition des cases: 
 
-Aa = pygame.Rect(250,250,50,50)
-Ab = pygame.Rect(350,250,50,50)
-Ac = pygame.Rect(450,250,50,50)
-Ad = pygame.Rect(550,250,50,50)
+
+
+ligne1 = {
+    'Aa': pygame.Rect(250,250,50,50),
+    'Ab': pygame.Rect(350,250,50,50),
+    'Ac': pygame.Rect(450,250,50,50),
+    'Ad': pygame.Rect(550,250,50,50),
+}
+
+couleur = {
+    "Aa": "blue", 
+    "Ab": "blue",
+    "Ac": "blue", 
+    "Ad": "blue", 
+    
+}
 
 colorAa = "blue"
 colorAb = "blue"
@@ -63,10 +75,10 @@ while game_on == True:
     pygame.draw.rect(screen, pygame.Color("red"), banniere) #on dessine la bannière
 
 
-    pygame.draw.rect(screen, pygame.Color(colorAa), Aa)
-    pygame.draw.rect(screen, pygame.Color(colorAb), Ab)
-    pygame.draw.rect(screen, pygame.Color(colorAc), Ac)
-    pygame.draw.rect(screen, pygame.Color(colorAd), Ad)
+    pygame.draw.rect(screen, pygame.Color(couleur["Aa"]), ligne1["Aa"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Ab"]), ligne1["Ab"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Ac"]), ligne1["Ac"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Ad"]), ligne1["Ad"])
 
     pygame.draw.rect(screen, pygame.Color("orange"), pointer, 3)
 
@@ -78,6 +90,15 @@ while game_on == True:
     if keys[pygame.K_RIGHT]:
         x = x + 100
 
+    for i in ligne1:
+        if ligne1[i] == pygame.Rect(x,y,50,50):
+            selection = i
+            print(i)
+    ####################################################################################
+    if keys[pygame.K_r]:
+        couleur[selection] = "red"
+    
+    if keys[pygame.K_g]
 
 
 
