@@ -2,7 +2,7 @@ import random
 
 ### variables ###
 
-colors: list = ["blue", "green", "yellow", "red", "orange", "grey"] # colors to be used in game
+colors: list = ["blue", "green", "yellow", "red", "orange", "pink"] # colors to be used in game
 
 code: list = [] # list containing random arrangement of 4 colors to be found out be user
 
@@ -17,7 +17,7 @@ gameWon: bool = False # boolean to know if the user has found the code
 ### fonctions ###
 
 def getList():
-    input_string: str = input("Enter a code of four colors (blue, green, yellow, red, orange or grey) separated by a space: ")
+    input_string: str = input("Enter a code of four colors (blue, green, yellow, red, orange or pink) separated by a space: ")
     user_list: list = input_string.split()
     return user_list
 

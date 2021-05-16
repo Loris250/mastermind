@@ -31,7 +31,7 @@ banniere =pygame.Rect(0,0,1000,200) #definition d'une surface ou l'on affichera 
 #definition des cases: 
 
 
-
+#definition de la position de cases
 ligne1 = {
     'Aa': pygame.Rect(250,250,50,50),
     'Ab': pygame.Rect(350,250,50,50),
@@ -39,6 +39,7 @@ ligne1 = {
     'Ad': pygame.Rect(550,250,50,50),
 }
 
+#definition des couleurs des cases, l'utilisation des dictionnaires est très importante 
 couleur = {
     "Aa": "blue", 
     "Ab": "blue",
@@ -47,10 +48,7 @@ couleur = {
     
 }
 
-colorAa = "blue"
-colorAb = "blue"
-colorAc = "blue"
-colorAd = "blue"
+#Position de base du pointer
 
 x = 250
 y = 250
@@ -80,30 +78,62 @@ while game_on == True:
     pygame.draw.rect(screen, pygame.Color(couleur["Ac"]), ligne1["Ac"])
     pygame.draw.rect(screen, pygame.Color(couleur["Ad"]), ligne1["Ad"])
 
-    pygame.draw.rect(screen, pygame.Color("orange"), pointer, 3)
+    pygame.draw.rect(screen, pygame.Color("black"), pointer, 3)
 
 
+
+#Pour obtenir les données du clavier:
     keys = pygame.key.get_pressed()
 
+
+#Pour faire bouger le pointer de gauche à droite: 
     if keys[pygame.K_LEFT]:
         x = x - 100
     if keys[pygame.K_RIGHT]:
         x = x + 100
 
+
+#Pour connaître la case sélectionnée par le pointer
     for i in ligne1:
         if ligne1[i] == pygame.Rect(x,y,50,50):
             selection = i
-            print(i)
+
+
     ####################################################################################
-    if keys[pygame.K_r]:
+    #Changements de couleur avec les touches
+    #####################################################################################
+    if keys[pygame.K_b]:
+        couleur[selection] = "blue"
+
+    if keys[pygame.K_g]: 
+        couleur[selection] = "green"
+
+    if keys[pygame.K_y]:
+        couleur[selection] = "yellow"
+
+    if keys[pygame.K_r]: 
         couleur[selection] = "red"
-    
-    if keys[pygame.K_g]
+
+    if keys[pygame.K_o]:
+        couleur[selection] = "orange"
+
+    if keys[pygame.K_p]:
+        couleur[selection] = "pink"
+
+
+###################################################################################
+#décodage de la séquence de la ligne 1: 
+###################################################################################
+
+        
 
 
 
 
 
+
+
+#rafraichissement de la page, puis timer afin que tout fonctionne bien avec les transitions
     pygame.display.update()
     timer.tick(10) #définition du timer à 60 images par secondes 
 
