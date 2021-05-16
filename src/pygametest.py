@@ -6,6 +6,60 @@
 
 import pygame #module pygame 
 import sys #module nécessaire pour bien fermer le programme
+import random #module random nécessaire pour générer un code 
+
+#################################################################################
+#importation du code précédent pour générer une séquence ainsi que vérifier et donner les résultats.
+################################################################################################
+
+
+colors: list = ["blue", "green", "yellow", "red", "orange", "pink"] # colors to be used in game
+
+code: list = [] # list containing random arrangement of 4 colors to be found out be user
+
+response: list = [] # list containing black or white as response to user_list
+
+user_list: list = [] # liste contenant la liste de couleur entrée par l'utilisateur 
+
+def generercode(): 
+    for i in range(4): # generating random code
+        code.append(random.choice(colors))
+    return code 
+
+code = generercode() #on genere un code 
+
+########################################
+#verification du code
+##############################################
+
+def verificationcode(solution, codeutilisateur):
+    
+    code_copy = solution
+    response = []
+
+    if solution == codeutilisateur:
+        response = 4*["black"]
+
+    else: 
+        for i in range(4):
+            if code_copy[i] == codeutilisateur[i]:
+                response.append("black")
+                code_copy[i] = "0"
+                codeutilisateur[i] = "rien"
+
+
+        for i in range(4):
+            for n in range(4):
+                 if codeutilisateur[i] == code_copy[n]:
+                    response.append("white")
+                    codeutilisateur[i] = "rien"
+                    code_copy[n] = "0"
+    
+    return response
+
+
+
+
 
 
 ############################################################################
@@ -48,6 +102,30 @@ couleur = {
     
 }
 
+############################################################################################
+#definition des cases de réponses
+###########################################################################################
+
+repcase1 = {
+    "i": pygame.Rect(700,250,50,50),
+    "ii": pygame.Rect(750,250,50,50),
+    "iii": pygame.Rect(800,250,50,50),
+    "iv": pygame.Rect(850,250,50,50),
+}
+
+repcase1couleur = {
+    "i": "white",
+    "ii": "white",
+    "iii": "white",
+    "iv": "black",
+
+}
+
+
+
+
+
+
 #Position de base du pointer
 
 x = 250
@@ -87,9 +165,9 @@ while game_on == True:
 
 
 #Pour faire bouger le pointer de gauche à droite: 
-    if keys[pygame.K_LEFT]:
+    if keys[pygame.K_LEFT] and x>250:
         x = x - 100
-    if keys[pygame.K_RIGHT]:
+    if keys[pygame.K_RIGHT] and x<550:
         x = x + 100
 
 
@@ -126,8 +204,17 @@ while game_on == True:
 ###################################################################################
 
         
-
-
+    reponseligne1 = []
+    for i in couleur: 
+        reponseligne1.append(couleur[i])
+    
+    ############################################
+    ##########################################
+    
+    pygame.draw.rect(screen, pygame.Color(repcase1couleur["i"]), repcase1["i"])
+    pygame.draw.rect(screen, pygame.Color(repcase1couleur["ii"]), repcase1["ii"])
+    pygame.draw.rect(screen, pygame.Color(repcase1couleur["iii"]), repcase1["iii"])
+    pygame.draw.rect(screen, pygame.Color(repcase1couleur["iv"]), repcase1["iv"])
 
 
 
