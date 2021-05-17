@@ -108,17 +108,17 @@ couleur = {
 ###########################################################################################
 
 repcase1 = {
-    "i": pygame.Rect(700,250,50,50),
-    "ii": pygame.Rect(750,250,50,50),
-    "iii": pygame.Rect(800,250,50,50),
-    "iv": pygame.Rect(850,250,50,50),
+    0: pygame.Rect(700,250,50,50),
+    1: pygame.Rect(750,250,50,50),
+    2: pygame.Rect(800,250,50,50),
+    3: pygame.Rect(850,250,50,50),
 }
 
 repcase1couleur = {
-    "i": "white",
-    "ii": "white",
-    "iii": "white",
-    "iv": "black",
+    0: "white",
+    1: "white",
+    2: "white",
+    3: "black",
 
 }
 
@@ -139,6 +139,16 @@ verifyline1 = False
 verifyline2 = False
 verifyline3 = False
 verifyline4 = False
+
+affichagel1 = False
+affichagel2 = False
+affichagel3 = False
+affichagel4 = False
+
+resultline1 = []
+resultline2 = []
+resultline3 = []
+resultline4 = []
 #etc
 
 
@@ -221,11 +231,13 @@ while game_on == True:
         reponseligne1.append(couleur[i])
     
     ############################################
+    
     ##########################################
 
 #clavier pour vérifier les lignes:
     if keys[pygame.K_1]:
         verifyline1 = True
+        affichagel1 = True
     if keys[pygame.K_2]:
         verifyline2 = True
     if keys[pygame.K_3]:
@@ -239,16 +251,23 @@ while game_on == True:
     #donner la vérification de la ligne 1: 
     if verifyline1 == True:
 
-        resultligne1 = verificationcode(code,reponseligne1)
-        print(resultligne1, "o")
-        print(reponseligne1)
-        print(code, "ee")
+        resultline1 = verificationcode(code,reponseligne1)
+
+       #liste
+        #for i in resultline1: 
+          #  repcase1couleur[i] = resultline1[i]
+        verifyline1 = False
+    
+    print(resultline1)
+    
 
 
-        pygame.draw.rect(screen, pygame.Color(repcase1couleur["i"]), repcase1["i"])
-        pygame.draw.rect(screen, pygame.Color(repcase1couleur["ii"]), repcase1["ii"])
-        pygame.draw.rect(screen, pygame.Color(repcase1couleur["iii"]), repcase1["iii"])
-        pygame.draw.rect(screen, pygame.Color(repcase1couleur["iv"]), repcase1["iv"])
+    if affichagel1 == True:
+
+        pygame.draw.rect(screen, pygame.Color(repcase1couleur[0]), repcase1[0])
+        pygame.draw.rect(screen, pygame.Color(repcase1couleur[1]), repcase1[1])
+        pygame.draw.rect(screen, pygame.Color(repcase1couleur[2]), repcase1[2])
+        pygame.draw.rect(screen, pygame.Color(repcase1couleur[3]), repcase1[3])
 
 
 
