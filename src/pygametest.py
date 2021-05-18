@@ -99,6 +99,8 @@ banniere =pygame.Rect(0,0,1100,200) #definition d'une surface ou l'on affichera 
 
 
 #definition de la position de cases
+
+#ligne1: 
 ligne1 = {
     'Aa': pygame.Rect(250,250,50,50),
     'Ab': pygame.Rect(350,250,50,50),
@@ -106,14 +108,56 @@ ligne1 = {
     'Ad': pygame.Rect(550,250,50,50),
 }
 
+#ligne2: 
+ligne2 = {
+    'Ba': pygame.Rect(250,350,50,50),
+    'Bb': pygame.Rect(350,350,50,50),
+    'Bc': pygame.Rect(450,350,50,50),
+    'Bd': pygame.Rect(550,350,50,50),
+}
+#ligne3: 
+ligne3 = {
+    'Ca': pygame.Rect(250,450,50,50),
+    'Cb': pygame.Rect(350,450,50,50),
+    'Cc': pygame.Rect(450,450,50,50),
+    'Cd': pygame.Rect(550,450,50,50),
+}
+#ligne4: 
+ligne4 = {
+    'Da': pygame.Rect(250,550,50,50),
+    'Db': pygame.Rect(350,550,50,50),
+    'Dc': pygame.Rect(450,550,50,50),
+    'Dd': pygame.Rect(550,550,50,50),
+}
+
+
 #definition des couleurs des cases, l'utilisation des dictionnaires est très importante 
 couleur = {
     "Aa": "blue", 
     "Ab": "blue",
     "Ac": "blue", 
     "Ad": "blue", 
+    #deuxième ligne
+    "Ba": "blue",
+    "Bb": "blue", 
+    "Bc": "blue",
+    "Bd": "blue", 
+    #3ième ligne 
+    "Ca": "blue",
+    "Cb": "blue", 
+    "Cc": "blue",
+    "Cd": "blue", 
+    #4ième ligne 
+    "Da": "blue",
+    "Db": "blue", 
+    "Dc": "blue",
+    "Dd": "blue", 
+
+
     
 }
+
+
 
 ############################################################################################
 #definition des cases de réponses
@@ -185,10 +229,37 @@ while game_on == True:
     pygame.draw.rect(screen, pygame.Color("red"), banniere) #on dessine la bannière
 
 
+
     pygame.draw.rect(screen, pygame.Color(couleur["Aa"]), ligne1["Aa"])
     pygame.draw.rect(screen, pygame.Color(couleur["Ab"]), ligne1["Ab"])
     pygame.draw.rect(screen, pygame.Color(couleur["Ac"]), ligne1["Ac"])
     pygame.draw.rect(screen, pygame.Color(couleur["Ad"]), ligne1["Ad"])
+
+    pygame.draw.rect(screen, pygame.Color(couleur["Ba"]), ligne2["Ba"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Bb"]), ligne2["Bb"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Bc"]), ligne2["Bc"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Bd"]), ligne2["Bd"])
+
+    pygame.draw.rect(screen, pygame.Color(couleur["Ca"]), ligne3["Ca"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Cb"]), ligne3["Cb"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Cc"]), ligne3["Cc"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Cd"]), ligne3["Cd"])
+
+    pygame.draw.rect(screen, pygame.Color(couleur["Da"]), ligne4["Da"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Db"]), ligne4["Db"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Dc"]), ligne4["Dc"])
+    pygame.draw.rect(screen, pygame.Color(couleur["Dd"]), ligne4["Dd"])
+
+
+
+
+
+
+
+
+
+
+
 
     pygame.draw.rect(screen, pygame.Color("black"), pointer, 3)
 
@@ -275,7 +346,7 @@ while game_on == True:
 
         
     
-        print(resultline1)
+        y = 350 #on met le pointer sur la ligne suivante 
         verifyline1 = False
     
 
