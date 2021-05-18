@@ -12,49 +12,61 @@ import random #module random nécessaire pour générer un code
 #importation du code précédent pour générer une séquence ainsi que vérifier et donner les résultats.
 ################################################################################################
 
+#Liste des couleurs disponibles pour la génération d'une séquence "code à deviner":
 
-colors: list = ["blue", "green", "yellow", "red", "orange", "pink"] # colors to be used in game
+colors: list = ["blue", "green", "yellow", "red", "orange", "pink"] 
 
-code: list = [] # list containing random arrangement of 4 colors to be found out be user
+#Definition de la liste qui va contenir le code: 
 
-response: list = [] # list containing black or white as response to user_list
+code: list = [] 
 
-user_list: list = [] # liste contenant la liste de couleur entrée par l'utilisateur 
+#Definition de la liste qui contient la séquence de couleur entrée par l'utilisateur
+
+user_list: list = [] 
+
+#Definition de la liste qui contient les valeurs  de vérifications donnée par la fonction de vérification. (contient white ou black): 
+
+response: list = [] 
+
+#Fonction qui génère la séquence "code"
 
 def generercode(): 
     for i in range(4): # generating random code
         code.append(random.choice(colors))
     return code 
-
+    
 code = generercode() #on genere un code 
-print(code)
+
+print("Le code est: ", code)
+
+
 
 ########################################
-#verification du code
+#Fonction qui vérifie la séquence entrée par l'utilisateur,   
 ##############################################
 
-def verificationcode(solution, codeutilisateur):
+def verificationcode(solution, essai):
     
-    code_copy = solution
+    copy_solution = solution.copy() #Problème réglé !! problème: les variables pointent vers les mm emplacements dans la mémoire
     response = []
 
-    if solution == codeutilisateur:
+    if solution == essai:
         response = 4*["black"]
 
     else: 
         for i in range(4):
-            if code_copy[i] == codeutilisateur[i]:
+            if copy_solution[i] == essai[i]:
                 response.append("black")
-                code_copy[i] = "0"
-                codeutilisateur[i] = "rien"
+                copy_solution[i] = "0"
+                essai[i] = "rien"
 
 
         for i in range(4):
             for n in range(4):
-                 if codeutilisateur[i] == code_copy[n]:
+                 if essai[i] == copy_solution[n]:
                     response.append("white")
-                    codeutilisateur[i] = "rien"
-                    code_copy[n] = "0"
+                    essai[i] = "rien"
+                    copy_solution[n] = "0"
     
     return response
 
@@ -71,7 +83,7 @@ def verificationcode(solution, codeutilisateur):
 
 pygame.init() #initialisation du module pygame (indispensable)
 
-screen = pygame.display.set_mode((1000,1000)) #definition de la taille de la fenêtre (ex: 400x500) #c'est une surface primaire, le display surface est unique
+screen = pygame.display.set_mode((1100,1000)) #definition de la taille de la fenêtre (ex: 400x500) #c'est une surface primaire, le display surface est unique
 timer = pygame.time.Clock() #definitiion de la fonction qui définit le nombre d'image par seconde (raffraichissement du jeu)
 
 
@@ -80,7 +92,7 @@ timer = pygame.time.Clock() #definitiion de la fonction qui définit le nombre d
 
 
 
-banniere =pygame.Rect(0,0,1000,200) #definition d'une surface ou l'on affichera du texte ou le titre
+banniere =pygame.Rect(0,0,1100,200) #definition d'une surface ou l'on affichera du texte ou le titre
 
 ###########################################################################################################
 #definition des cases: 
@@ -109,9 +121,9 @@ couleur = {
 
 repcase1 = {
     0: pygame.Rect(700,250,50,50),
-    1: pygame.Rect(750,250,50,50),
-    2: pygame.Rect(800,250,50,50),
-    3: pygame.Rect(850,250,50,50),
+    1: pygame.Rect(800,250,50,50),
+    2: pygame.Rect(900,250,50,50),
+    3: pygame.Rect(1000,250,50,50),
 }
 
 repcase1couleur = {
@@ -167,7 +179,7 @@ while game_on == True:
             sys.exit() #permet de quitter le programme quand on appuie sur la croix rouge, le sys exit est nécessaire pour que le programme s'arrête complètement
 
 
-    screen.fill(pygame.Color("white")) #on veut un display screen de couleur blanche
+    screen.fill(pygame.Color("grey")) #on veut un display screen de couleur blanche
 
 
     pygame.draw.rect(screen, pygame.Color("red"), banniere) #on dessine la bannière
@@ -252,13 +264,19 @@ while game_on == True:
     if verifyline1 == True:
 
         resultline1 = verificationcode(code,reponseligne1)
+        
+        for i in range(0,(4 -len(resultline1))): 
+            resultline1.append("grey")
 
-       #liste
-        #for i in resultline1: 
-          #  repcase1couleur[i] = resultline1[i]
-        verifyline1 = False
+        repcase1couleur[0] = resultline1[0]
+        repcase1couleur[1] = resultline1[1]
+        repcase1couleur[2] = resultline1[2]
+        repcase1couleur[3] = resultline1[3]
+
+        
     
-    print(resultline1)
+        print(resultline1)
+        verifyline1 = False
     
 
 
@@ -268,6 +286,26 @@ while game_on == True:
         pygame.draw.rect(screen, pygame.Color(repcase1couleur[1]), repcase1[1])
         pygame.draw.rect(screen, pygame.Color(repcase1couleur[2]), repcase1[2])
         pygame.draw.rect(screen, pygame.Color(repcase1couleur[3]), repcase1[3])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
