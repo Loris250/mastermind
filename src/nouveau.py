@@ -197,7 +197,13 @@ while game_on == True:
     font_instr = pygame.font.SysFont(None, 20)
     instr_img = font_instr.render("enter the first letter of color (r,o,y,g,b,p) and confirm with line number", True, pygame.Color("white"))
     screen.blit(instr_img,(120,22))
-    
+    #numérotation lignes
+    numeros_font = pygame.font.SysFont(None, 24)
+    number_list = []
+    for i in range(8):
+        numero = numeros_font.render(str(i), True, pygame.Color("white"))
+        screen.blit(numero, (200,i*100+67))
+
     
     for i in range(8):
         for j in range(4):
