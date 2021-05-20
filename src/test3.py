@@ -1,7 +1,7 @@
-a = 2
-b = a
-print(a)
-print(b)
-b = 3
-print(a)
-print(b)
+dico = {
+    "1": "3", 
+    "2": "4"
+}
+
+for cle, valeur in dico.items(): 
+    print(cle, valeur)
