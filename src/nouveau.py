@@ -21,6 +21,7 @@ code: list = []
 game_on = True #variable qui définit que le jeu est allumé
 
 game_won = False # variable for when game is won
+game_loose = False
 
 #Fonction qui génère la séquence "code"
 
@@ -474,6 +475,11 @@ while game_on == True:
     if affichagel7 == True:
         for i in range(4):
             pygame.draw.rect(screen, pygame.Color(repcasecouleur["7" + str(i)]), repcase["7" + str(i)])
+            if game_won == False: 
+                print("ouk")
+                game_loose = True
+                game_on = False
+
 
 
 
@@ -486,13 +492,8 @@ while game_won == True:
     game_on = False
     screen.fill(pygame.Color("white"))
     font = pygame.font.SysFont(None, 80)
-    img = font.render(("Bravo ! Vous avez gagné en " + str(nombre_essais) + " essais"), True, pygame.Color("blue"))
+    img = font.render(("Bravo ! Vous avez gagné en " + str(nombre_essais) + " essais ! "), True, pygame.Color("blue"))
     screen.blit(img, (5, 50))
-
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            game_won = False
-            game_on = True
 
 
     pygame.display.update()
@@ -501,7 +502,38 @@ while game_won == True:
         if event.type == pygame.QUIT:
             pygame.quit() 
             sys.exit() 
-    
+
+
+while game_loose == True:
+
+    for event in pygame.event.get():  #Pour chaque élément qu'il se passe lors du fonctionnement du jeu pygame: 
+        if event.type == pygame.QUIT:
+            pygame.quit() 
+            sys.exit() 
+
+    game_on = False
+    screen.fill(pygame.Color("black"))
+    font = pygame.font.SysFont(None, 80)
+    img = font.render(("Vous avez perdu, le code était:   "), True, pygame.Color("white"))
+    screen.blit(img, (5, 50))
+    loosesolution = {
+    'A': pygame.Rect(250,250,50,50),
+    'B': pygame.Rect(350,250,50,50),
+    'C': pygame.Rect(450,250,50,50),
+    'D': pygame.Rect(550,250,50,50),
+    }
+    pygame.draw.rect(screen, pygame.Color(code[0]), loosesolution["A"])
+    pygame.draw.rect(screen, pygame.Color(code[1]), loosesolution["B"])
+    pygame.draw.rect(screen, pygame.Color(code[2]), loosesolution["C"])
+    pygame.draw.rect(screen, pygame.Color(code[3]), loosesolution["D"])
+
+
+    pygame.display.update()
+
+    for event in pygame.event.get():  #Pour chaque élément qu'il se passe lors du fonctionnement du jeu pygame: 
+        if event.type == pygame.QUIT:
+            pygame.quit() 
+            sys.exit() 
 
 
 
