@@ -497,7 +497,7 @@ while game_on == True:
 while game_won == True:
     screen.fill(pygame.Color("white"))
     font = pygame.font.SysFont(None, 80)
-    img = font.render("Vous avez gagné en", str(nombre_essais), pygame.Color("blue"))
+    img = font.render(("Vous avez gagné en " + str(nombre_essais) + " essais"), True, pygame.Color("blue"))
     screen.blit(img, (5, 50))
     pygame.display.update()
     for event in pygame.event.get():  #Pour chaque élément qu'il se passe lors du fonctionnement du jeu pygame: 
