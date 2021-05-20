@@ -331,7 +331,7 @@ while game_on == True:
             repcasecouleur["0" + str(i)] = resultline0[i]
             
         verifyline0 = False
-        y = y+100 #on met le pointer sur la ligne suivante
+        y = 150 #on met le pointer sur la ligne suivante
         
          
 
@@ -353,7 +353,7 @@ while game_on == True:
         for i in range(4):
             repcasecouleur["1" + str(i)] = resultline1[i]
         
-        y = y+100 #on met le pointer sur la ligne suivante 
+        y = 250 #on met le pointer sur la ligne suivante 
         verifyline1 = False
         
     
@@ -374,7 +374,7 @@ while game_on == True:
         for i in range(4):
             repcasecouleur["2" + str(i)] = resultline2[i]
         
-        y = y+100 #on met le pointer sur la ligne suivante 
+        y = 350 #on met le pointer sur la ligne suivante 
         verifyline2 = False
     
 
@@ -394,7 +394,7 @@ while game_on == True:
         for i in range(4):
             repcasecouleur["3" + str(i)] = resultline3[i]
         
-        y = y+100 #on met le pointer sur la ligne suivante 
+        y = 450 #on met le pointer sur la ligne suivante 
         verifyline3 = False
     
 
@@ -414,7 +414,7 @@ while game_on == True:
         for i in range(4):
             repcasecouleur["4" + str(i)] = resultline4[i]
         
-        y = y+100 #on met le pointer sur la ligne suivante 
+        y = 550 #on met le pointer sur la ligne suivante 
         verifyline4 = False
     
 
@@ -434,7 +434,7 @@ while game_on == True:
         for i in range(4):
             repcasecouleur["5" + str(i)] = resultline5[i]
         
-        y = y+100 #on met le pointer sur la ligne suivante 
+        y = 650 #on met le pointer sur la ligne suivante 
         verifyline5 = False
     
 
@@ -455,7 +455,7 @@ while game_on == True:
         for i in range(4):
             repcasecouleur["6" + str(i)] = resultline6[i]
         
-        y = y+100 #on met le pointer sur la ligne suivante 
+        y = 750 #on met le pointer sur la ligne suivante 
         verifyline6 = False
     
 
@@ -475,7 +475,7 @@ while game_on == True:
         for i in range(4):
             repcasecouleur["7" + str(i)] = resultline7[i]
         
-        y = y+100 #on met le pointer sur la ligne suivante 
+        y = 850 #on met le pointer sur la ligne suivante 
         verifyline7 = False
     
 
@@ -502,5 +502,9 @@ while game_won == True:
             pygame.quit() 
             sys.exit() 
     
+
+
+
+
 
 
