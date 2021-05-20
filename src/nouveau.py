@@ -2,15 +2,13 @@
 #              Importations des modules
 #########################################################################
 
-
-
 import pygame #module pygame 
 import sys #module nécessaire pour bien fermer le programme
 import random #module random nécessaire pour générer un code 
 
-#################################################################################
-#importation du code précédent pour générer une séquence ainsi que vérifier et donner les résultats.
-################################################################################################
+##########################################################################
+#                Partie génération du code
+###########################################################################
 
 #Liste des couleurs disponibles pour la génération d'une séquence "code à deviner":
 
@@ -20,15 +18,8 @@ colors: list = ["blue", "green", "yellow", "red", "orange", "pink"]
 
 code: list = [] 
 
-#Definition de la liste qui contient la séquence de couleur entrée par l'utilisateur
-
-user_list: list = [] 
-
-#Definition de la liste qui contient les valeurs  de vérifications donnée par la fonction de vérification. (contient white ou black): 
-
-response: list = []
-
 game_on = True #variable qui définit que le jeu est allumé
+
 game_won = False # variable for when game is won
 
 #Fonction qui génère la séquence "code"
@@ -40,13 +31,12 @@ def generercode():
     
 code = generercode() #on genere un code 
 
-print("Le code est: ", code)
+print("Le code est: ", code) #sert à débuguer, on print le code dans la console
 
 
-
-########################################
-#Fonction qui vérifie la séquence entrée par l'utilisateur,   
-##############################################
+#################################################################
+#Fonction qui vérifie la séquence entrée par l'utilisateur
+###############################################################
 
 def verificationcode(solution, essai):
     
@@ -78,38 +68,24 @@ def verificationcode(solution, essai):
     return response
 
 
-
-
-
-
 ############################################################################
 #               Initialisation du jeu pygame
 ###########################################################################
 
 
-
 pygame.init() #initialisation du module pygame (indispensable)
+pygame.display.set_caption("MASTERMIND")
 
 screen = pygame.display.set_mode((1100,850)) #definition de la taille de la fenêtre (ex: 400x500) #c'est une surface primaire, le display surface est unique
 timer = pygame.time.Clock() #definition de la fonction qui définit le nombre d'image par seconde (raffraichissement du jeu)
 
 
-
-#################################################################################################################
-#################################################################################################################
-
-
-
 banniere =pygame.Rect(0,0,1100,40) #definition d'une surface ou l'on affichera du texte ou le titre
 
-nombre_essais = 0 
-
-###########################################################################################################
-#definition des cases: 
+nombre_essais = 0 # Sert à afficher le nombre de tentatives de l'utilisateur dans le résultat final
 
 
 #definition de la position de cases
-
 
 matrice = {}
 for i in range(8):
@@ -120,12 +96,12 @@ for i in range(8):
 matrice_couleur = {}
 for i in range(8):
     for j in range(4):
-        matrice_couleur[str(i) + str(j)] = "blue"
+        matrice_couleur[str(i) + str(j)] = "blue" #Toutes les cases sont bleues initialement
    
 
-############################################################################################
 #definition des cases de réponses
-###########################################################################################
+
+
 repcase = {}
 for i in range(8):
     for j in range(4):
@@ -507,12 +483,20 @@ while game_on == True:
 
 
 while game_won == True:
+    game_on = False
     screen.fill(pygame.Color("white"))
     font = pygame.font.SysFont(None, 80)
-    img = font.render(("Vous avez gagné en " + str(nombre_essais) + " essais"), True, pygame.Color("blue"))
-    
+    img = font.render(("Bravo ! Vous avez gagné en " + str(nombre_essais) + " essais"), True, pygame.Color("blue"))
     screen.blit(img, (5, 50))
+
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            game_won = False
+            game_on = True
+
+
     pygame.display.update()
+
     for event in pygame.event.get():  #Pour chaque élément qu'il se passe lors du fonctionnement du jeu pygame: 
         if event.type == pygame.QUIT:
             pygame.quit() 
