@@ -173,7 +173,7 @@ resultline5 = []
 resultline6 = []
 resultline7 = []
 
-
+### MAIN LOOP ######
 
 while game_on == True:
         
@@ -189,6 +189,9 @@ while game_on == True:
 
 
     pygame.draw.rect(screen, pygame.Color("red"), banniere) #on dessine la bannière
+    font_mastermind = pygame.font.SysFont(None, 24)
+    mm_img = font_mastermind.render('Mastermind', True, pygame.Color("white"))
+    screen.blit(mm_img, (20, 20))
     
     for i in range(8):
         for j in range(4):
