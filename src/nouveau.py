@@ -100,7 +100,7 @@ timer = pygame.time.Clock() #definition de la fonction qui définit le nombre d'
 
 
 
-banniere =pygame.Rect(0,0,1100,50) #definition d'une surface ou l'on affichera du texte ou le titre
+banniere =pygame.Rect(0,0,1100,40) #definition d'une surface ou l'on affichera du texte ou le titre
 
 nombre_essais = 0 
 
@@ -189,9 +189,15 @@ while game_on == True:
 
 
     pygame.draw.rect(screen, pygame.Color("red"), banniere) #on dessine la bannière
+    #titre
     font_mastermind = pygame.font.SysFont(None, 24)
-    mm_img = font_mastermind.render('Mastermind', True, pygame.Color("white"))
+    mm_img = font_mastermind.render("Mastermind: ", True, pygame.Color("white"))
     screen.blit(mm_img, (20, 20))
+    #instructions
+    font_instr = pygame.font.SysFont(None, 20)
+    instr_img = font_instr.render("enter the first letter of color (r,o,y,g,b,p) and confirm with line number", True, pygame.Color("white"))
+    screen.blit(instr_img,(120,22))
+    
     
     for i in range(8):
         for j in range(4):
