@@ -175,8 +175,9 @@ while game_on == True:
     instr_img = font_instr.render("enter the first letter of color (r,o,y,g,b,p) and confirm with line number", True, pygame.Color("white"))
     screen.blit(instr_img,(120,22))
     #Title for results
-    resultat_img = font_instr.render("Results", True, pygame.Color("white"))
-    screen.blit(resultat_img,(700,22))
+    font_resultat = pygame.font.SysFont(None, 16)
+    resultat_img = font_resultat.render("Results: Black = correct color at right place, white = correct color at wrong place", True, pygame.Color("white"))
+    screen.blit(resultat_img,(650,22))
     #numérotation lignes
     numeros_font = pygame.font.SysFont(None, 24)
     number_list = []
@@ -479,7 +480,6 @@ while game_on == True:
         for i in range(4):
             pygame.draw.rect(screen, pygame.Color(repcasecouleur["7" + str(i)]), repcase["7" + str(i)])
             if game_won == False: 
-                print("ouk")
                 game_loose = True
                 game_on = False
 
