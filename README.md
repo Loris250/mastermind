@@ -1,3 +1,0 @@
-# Mastermind
-
-## Projet python
