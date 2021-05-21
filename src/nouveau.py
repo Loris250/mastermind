@@ -274,7 +274,7 @@ while game_on == True:
     for i in range(4):
         reponseligne7.append(matrice_couleur["7"+str(i)])
  
-   
+
     
     
     ##########################################

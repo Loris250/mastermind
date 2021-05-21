@@ -70,7 +70,7 @@ while len(code) != len(user_list):
 
 while gameWon == False and verification ==  1:
 
-    code_copy = code
+    code_copy = code.copy()
 
     if code == user_list:
         response = 4*["black"]
@@ -85,9 +85,6 @@ while gameWon == False and verification ==  1:
             code_copy[i] = "0"
             user_list[i] = "rien"
 
-    print(code_copy)
-    print(response)
-
 
     #comparer les couleurs 
 
@@ -97,7 +94,9 @@ while gameWon == False and verification ==  1:
                 response.append("white")
                 user_list[i] = "rien"
                 code_copy[n] = "0"
-    print(code_copy)
+
     print(response)
 
     break
+
+
