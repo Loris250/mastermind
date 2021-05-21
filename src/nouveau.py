@@ -189,7 +189,7 @@ while game_on == True:
 
 
     pygame.draw.rect(screen, pygame.Color("red"), banniere) #on dessine la bannière
-    #titre
+    #mastermind title
     font_mastermind = pygame.font.SysFont(None, 24)
     mm_img = font_mastermind.render("Mastermind: ", True, pygame.Color("white"))
     screen.blit(mm_img, (20, 20))
@@ -197,6 +197,9 @@ while game_on == True:
     font_instr = pygame.font.SysFont(None, 20)
     instr_img = font_instr.render("enter the first letter of color (r,o,y,g,b,p) and confirm with line number", True, pygame.Color("white"))
     screen.blit(instr_img,(120,22))
+    #Title for results
+    resultat_img = font_instr.render("Results", True, pygame.Color("white"))
+    screen.blit(resultat_img,(700,22))
     #numérotation lignes
     numeros_font = pygame.font.SysFont(None, 24)
     number_list = []
